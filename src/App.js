@@ -3,7 +3,7 @@ import logo from "./logo.svg";
 import { Counter } from "./features/counter/Counter";
 import { useTranslation } from "react-i18next";
 
-import "./App.css";
+import "./App.scss";
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -13,6 +13,7 @@ function App() {
   const Welcome = () => {
     return (
       <span
+        className={i18n.language + " lang"}
         onClick={() => {
           changeDictionary("a");
         }}

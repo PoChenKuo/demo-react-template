@@ -1,5 +1,15 @@
 .App {
   text-align: center;
+
+  span.lang {
+    transition: all 0.16s ease-in;
+    color: #ff7777;
+    background: #77ff77;
+    &:hover {
+      color: #77ff77;
+      background: #ff7777;
+    }
+  }
 }
 
 .App-logo {
@@ -31,9 +41,9 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(10px)
+    transform: translateY(10px);
   }
   100% {
-    transform: translateY(0px)
+    transform: translateY(0px);
   }
 }
