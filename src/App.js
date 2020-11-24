@@ -1,17 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import { Counter } from "./features/counter/Counter";
+import { useTranslation } from "react-i18next";
+
+import "./App.css";
 
 function App() {
+  const { t, i18n } = useTranslation();
+  const changeDictionary = (term) => {
+    i18n.changeLanguage(i18n.language === "en" ? "fr" : "en");
+  };
+  const Welcome = () => {
+    return (
+      <span
+        onClick={() => {
+          changeDictionary("a");
+        }}
+      >
+        {t("Welcome to React")}
+      </span>
+    );
+  };
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Counter />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Edit <code>src/App.js</code> and save to reload. return{" "}
         </p>
+        <Welcome />
         <span>
           <span>Learn </span>
           <a
