@@ -8,6 +8,8 @@ import Layout from "./views/Layout";
 import * as serviceWorker from "./serviceWorker";
 import "./i18n";
 import "./index.css";
+// https://github.com/fontsource/fontsource/blob/master/packages/roboto/README.md
+// load roboto font with Instruction guide
 
 ReactDOM.render(
   <React.StrictMode>
