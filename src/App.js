@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import { Switch, Route, useParams } from "react-router-dom";
 import "@src/App.scss";
-
+import axios from "axios";
 function App() {
   const { t, i18n } = useTranslation();
   const changeDictionary = (term) => {
@@ -23,9 +23,19 @@ function App() {
       </span>
     );
   };
+  const request = new Promise((resolve, reject) => {
+    axios
+      .get(
+        "https://cdnjs.cloudflare.com/ajax/libs/jquery-jsonview/1.2.3/jquery.jsonview.min.css"
+      )
+      .then((rv) => {
+        console.log(rv);
+        resolve(rv);
+      });
+  });
   return (
     <div className="App">
-      <header className="App-header">      
+      <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Counter />
         <p>
