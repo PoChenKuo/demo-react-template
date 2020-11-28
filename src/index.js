@@ -12,13 +12,13 @@ import "./index.css";
 // load roboto font with Instruction guide
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <Layout />
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <Provider store={store}>
+    <BrowserRouter>
+      <Layout />
+    </BrowserRouter>
+  </Provider>,
+  // </React.StrictMode>,
   document.getElementById("root")
 );
 

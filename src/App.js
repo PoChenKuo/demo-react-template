@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import logo from "./logo.svg";
 import { Counter } from "./features/counter/Counter";
 import { useTranslation } from "react-i18next";
@@ -6,24 +6,26 @@ import { useTranslation } from "react-i18next";
 import { Switch, Route, useParams } from "react-router-dom";
 import "@src/App.scss";
 import axios from "axios";
-function App() {
+
+const Welcome = () => {
   const { t, i18n } = useTranslation();
-  const changeDictionary = (term) => {
+  const changeDictionary = () => {
     i18n.changeLanguage(i18n.language === "en" ? "fr" : "en");
   };
-  const Welcome = () => {
-    return (
-      <span
-        className={i18n.language + " lang"}
-        onClick={() => {
-          changeDictionary("a");
-        }}
-      >
-        {t("Welcome to React")}
-      </span>
-    );
-  };
-  const request = new Promise((resolve, reject) => {
+  return (
+    <span
+      className={i18n.language + " lang"}
+      onClick={() => {
+        changeDictionary("a", i18n);
+      }}
+    >
+      {t("Welcome to React")}
+    </span>
+  );
+};
+
+const getAxiosEntity = () => {
+  return new Promise((resolve, reject) => {
     axios
       .get(
         "https://cdnjs.cloudflare.com/ajax/libs/jquery-jsonview/1.2.3/jquery.jsonview.min.css"
@@ -33,6 +35,10 @@ function App() {
         resolve(rv);
       });
   });
+};
+function App() {
+  getAxiosEntity().then((x) => console.log(x));
+
   return (
     <div className="App">
       <header className="App-header">
@@ -85,22 +91,4 @@ function App() {
   );
 }
 
-function Home() {
-  return <h2>Home</h2>;
-}
-
-function About() {
-  return <h2>About</h2>;
-}
-
-function Contact() {
-  let { id } = useParams();
-
-  return <div>Contact{id.length ? " " + id : ""}</div>;
-}
-
-function AllContacts() {
-  return <div>all Contact</div>;
-}
-
-export default App;
+export default React.memo(App);

@@ -1,10 +1,11 @@
 import React from "react";
 import MainPanel from "./MainPanel";
 import Header from "./Header";
-
+import {BrowserRouter as Router,} from 'react-router-dom'
 import "@style/index.scss";
 function Layout() {
   return (
+    <Router>
     <div className="layout">
       <div className="header">
         <Header />
@@ -13,7 +14,8 @@ function Layout() {
         <div className="left-panel map"></div>
         <MainPanel />
       </div>
-    </div>
+      </div>
+      </Router>
   );
 }
 
